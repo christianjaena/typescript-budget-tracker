@@ -1,0 +1,8 @@
+CREATE DATABASE tsfs;
+
+CREATE TABLE user(
+	id SERIAL PRIMARY KEY,
+	username VARCHAR(20),
+	email VARCHAR(50),
+	password VARCHAR(50)
+)
