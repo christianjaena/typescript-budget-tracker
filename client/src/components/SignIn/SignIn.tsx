@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from './Home';
+import Home from '../Home/Home';
 import { useHistory } from 'react-router-dom';
 
 interface User {
@@ -27,7 +27,7 @@ const SignIn: React.FC = () => {
 	const signIn = async () => {
 		const userSignIn: User = { email, password };
 
-		const signIn = await fetch('http://localhost:5000/signin', {
+		const signIn = await fetch('http://localhost:5000/users/signin', {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json',

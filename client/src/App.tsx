@@ -1,7 +1,7 @@
 import React from 'react';
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
-import Home from './components/Home';
+import SignUp from './components/SignUp/SignUp';
+import SignIn from './components/SignIn/SignIn';
+import Home from './components/Home/Home';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 const App: React.FC = () => {
