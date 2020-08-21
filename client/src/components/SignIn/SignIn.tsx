@@ -15,7 +15,7 @@ interface UserCredentials {
 const SignIn: React.FC = () => {
 	const [email, setEmail] = React.useState<string>('');
 	const [password, setPassword] = React.useState<string>('');
-	const [isSignedIn, setIsSignedIn] = React.useState<boolean>(false);
+	const [isSignedIn, setIsSignedIn] = React.useState<boolean>(true);
 	const [userCredentials, setUserCredentials] = React.useState<UserCredentials>(
 		{
 			username: '',
