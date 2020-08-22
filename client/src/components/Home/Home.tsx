@@ -20,7 +20,7 @@ const Home: React.FC<Props> = ({ username, email }) => {
 	const history = useHistory();
 
 	const addTransaction = async () => {
-		const postApi = await fetch('http://localhost:5000/', {
+		const postApi = await fetch('/transactions', {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json',
@@ -34,12 +34,12 @@ const Home: React.FC<Props> = ({ username, email }) => {
 	};
 
 	const deleteTransaction = async (id: string) => {
-		await fetch(`http://localhost:5000/${id}`, { method: 'DELETE' });
+		await fetch(`/transactions/${id}`, { method: 'DELETE' });
 		setTransactions(prevTransactions => prevTransactions.filter(transaction => transaction._id !== id));
 	};
 
 	const getTransactions = async () => {
-		const getApi = await fetch('http://localhost:5000/');
+		const getApi = await fetch('/transactions');
 		const data = await getApi.json();
 		setTransactions(data);
 	};

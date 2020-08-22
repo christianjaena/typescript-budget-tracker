@@ -15,7 +15,7 @@ interface UserCredentials {
 const SignIn: React.FC = () => {
 	const [email, setEmail] = React.useState<string>('');
 	const [password, setPassword] = React.useState<string>('');
-	const [isSignedIn, setIsSignedIn] = React.useState<boolean>(true);
+	const [isSignedIn, setIsSignedIn] = React.useState<boolean>(false);
 	const [userCredentials, setUserCredentials] = React.useState<UserCredentials>(
 		{
 			username: '',
@@ -27,7 +27,7 @@ const SignIn: React.FC = () => {
 	const signIn = async () => {
 		const userSignIn: User = { email, password };
 
-		const signIn = await fetch('http://localhost:5000/users/signin', {
+		const signIn = await fetch('/signin', {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json',

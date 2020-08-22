@@ -32,7 +32,7 @@ app.use(cors());
 app.use(express.json());
 
 // * ROUTES * //
-app.get('/', async (req: Request, res: Response) => {
+app.get('/transactions', async (req: Request, res: Response) => {
 	try {
 		Transaction.find()
 			.sort({ createdAt: -1 })
@@ -45,7 +45,7 @@ app.get('/', async (req: Request, res: Response) => {
 	}
 });
 
-app.post('/', async (req: Request, res: Response) => {
+app.post('/transactions', async (req: Request, res: Response) => {
 	try {
 		const addTransaction: { amount: number; description: string } = req.body;
 		const transaction = new Transaction(addTransaction);
@@ -60,7 +60,7 @@ app.post('/', async (req: Request, res: Response) => {
 	}
 });
 
-app.delete('/:id', async (req: Request, res: Response) => {
+app.delete('/transactions/:id', async (req: Request, res: Response) => {
 	try {
 		const id = req.params.id;
 		Transaction.findByIdAndDelete(id)
@@ -72,3 +72,9 @@ app.delete('/:id', async (req: Request, res: Response) => {
 });
 
 app.use('/users', route);
+
+// ? CATCH ALL ? //
+
+app.get('*', (req, res) => {
+	res.sendFile('/client/build/index.html');
+})

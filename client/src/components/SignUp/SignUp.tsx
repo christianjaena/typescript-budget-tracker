@@ -15,7 +15,7 @@ const SignUp: React.FC = () => {
 
 	const signUp = async () => {
 		const user: User = { username, email, password };
-		const signUpUser: Response = await fetch('http://localhost:5000/users/signup', {
+		const signUpUser: Response = await fetch('/signup', {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json',
