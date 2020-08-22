@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import User from '../interfaces/User.interface';
-import pool from '../../pgConnection';
+import User from '../interfaces/User.interface.js';
+import pool from '../../pgConnection.js';
 
 export const userSignIn = async (req: Request, res: Response) => {
 	try {

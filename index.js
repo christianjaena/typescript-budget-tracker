@@ -40,16 +40,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-var usersRoutes_1 = __importDefault(require("./server/routes/usersRoutes"));
+var usersRoutes_js_1 = __importDefault(require("./server/routes/usersRoutes.js"));
 var mongoose_1 = __importDefault(require("mongoose"));
-var mongoConnection_1 = __importDefault(require("./mongoConnection"));
-var TransanctionModel_1 = __importDefault(require("./server/models/TransanctionModel"));
+var mongoConnection_js_1 = __importDefault(require("./mongoConnection.js"));
+var TransanctionModel_js_1 = __importDefault(require("./server/models/TransanctionModel.js"));
 var cors = require('cors');
 var PORT = process.env.PORT || 5000;
 var app = express_1.default();
 // * Mongo DB * //
 mongoose_1.default
-    .connect(mongoConnection_1.default, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(mongoConnection_js_1.default, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(function (result) {
     console.log('Mongo DB connected');
     app.listen(PORT, function () {
@@ -71,7 +71,7 @@ app.use(express_1.default.json());
 app.get('/transactions', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         try {
-            TransanctionModel_1.default.find()
+            TransanctionModel_js_1.default.find()
                 .sort({ createdAt: -1 })
                 .then(function (result) {
                 res.json(result);
@@ -89,7 +89,7 @@ app.post('/transactions', function (req, res) { return __awaiter(void 0, void 0,
     return __generator(this, function (_a) {
         try {
             addTransaction = req.body;
-            transaction = new TransanctionModel_1.default(addTransaction);
+            transaction = new TransanctionModel_js_1.default(addTransaction);
             transaction
                 .save()
                 .then(function (result) {
@@ -108,7 +108,7 @@ app.delete('/transactions/:id', function (req, res) { return __awaiter(void 0, v
     return __generator(this, function (_a) {
         try {
             id = req.params.id;
-            TransanctionModel_1.default.findByIdAndDelete(id)
+            TransanctionModel_js_1.default.findByIdAndDelete(id)
                 .then(function (result) { return res.json(result); })
                 .catch(function (err) { return console.log(err); });
         }
@@ -118,7 +118,7 @@ app.delete('/transactions/:id', function (req, res) { return __awaiter(void 0, v
         return [2 /*return*/];
     });
 }); });
-app.use('/users', usersRoutes_1.default);
+app.use('/users', usersRoutes_js_1.default);
 // ? CATCH ALL ? //
 app.get('*', function (req, res) {
     res.sendFile('/client/build/index.html');

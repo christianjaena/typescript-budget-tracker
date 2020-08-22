@@ -9,7 +9,8 @@
 	},
 	"scripts": {
 		"start": "tsc && node index",
-		"server": "nodemon --exec ts-node src/index.ts",
+		"predeploy": "concurrently --kill-others-on-fail \"tsc && nodemon index\" \"npm run client\"",
+		"server": "nodemon --exec ts-node index.ts",
 		"client": "cd client && npm start",
 		"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
 		"heroku-postbuild": "tsc && cd client && npm install && npm run build"

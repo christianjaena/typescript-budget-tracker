@@ -1,8 +1,8 @@
 import express, { Application, Request, Response, response } from 'express';
-import route from './server/routes/usersRoutes';
+import route from './server/routes/usersRoutes.js';
 import mongoose from 'mongoose';
-import mongoDbURI from './mongoConnection';
-import Transaction from './server/models/TransanctionModel';
+import mongoDbURI from './mongoConnection.js';
+import Transaction from './server/models/TransanctionModel.js';
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
 const app: Application = express();

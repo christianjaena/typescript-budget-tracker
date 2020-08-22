@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userSignUp = exports.userSignIn = void 0;
-var pgConnection_1 = __importDefault(require("../../pgConnection"));
+var pgConnection_js_1 = __importDefault(require("../../pgConnection.js"));
 exports.userSignIn = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, email, password, findUser, err_1;
     return __generator(this, function (_b) {
@@ -48,7 +48,7 @@ exports.userSignIn = function (req, res) { return __awaiter(void 0, void 0, void
             case 0:
                 _b.trys.push([0, 2, , 3]);
                 _a = req.body, email = _a.email, password = _a.password;
-                return [4 /*yield*/, pgConnection_1.default.query("SELECT username, email FROM users WHERE email = $1 AND password = $2", [email, password])];
+                return [4 /*yield*/, pgConnection_js_1.default.query("SELECT username, email FROM users WHERE email = $1 AND password = $2", [email, password])];
             case 1:
                 findUser = _b.sent();
                 res.json(findUser.rows);
@@ -68,11 +68,11 @@ exports.userSignUp = function (req, res) { return __awaiter(void 0, void 0, void
             case 0:
                 _b.trys.push([0, 5, , 6]);
                 _a = req.body, username = _a.username, email = _a.email, password = _a.password;
-                return [4 /*yield*/, pgConnection_1.default.query('SELECT * FROM users WHERE username = $1 OR email = $2', [username, email])];
+                return [4 /*yield*/, pgConnection_js_1.default.query('SELECT * FROM users WHERE username = $1 OR email = $2', [username, email])];
             case 1:
                 findDuplicate = _b.sent();
                 if (!!findDuplicate.rows[0]) return [3 /*break*/, 3];
-                return [4 /*yield*/, pgConnection_1.default.query('INSERT INTO users (username, email, password) VALUES($1, $2, $3) RETURNING *', [username, email, password])];
+                return [4 /*yield*/, pgConnection_js_1.default.query('INSERT INTO users (username, email, password) VALUES($1, $2, $3) RETURNING *', [username, email, password])];
             case 2:
                 addUser = _b.sent();
                 res.json(addUser.rows);
