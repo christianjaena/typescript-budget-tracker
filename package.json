@@ -9,7 +9,8 @@
 	},
 	"scripts": {
 		"start": "node index.js",
-		"postinstall": "tsc",
+		"tsc": "tsc",
+		"postinstall": "npm run tsc",
 		"server": "nodemon --exec ts-node index.ts",
 		"client": "cd client && npm start",
 		"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
