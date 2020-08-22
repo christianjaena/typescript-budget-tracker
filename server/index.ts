@@ -38,6 +38,6 @@ app.use('/users', usersRoutes);
 
 // ? CATCH ALL ? //
 
-app.get('*', (req, res) => {
-	res.sendFile('/client/build/index.html');
-})
+// app.get('*', (req, res) => {
+// 	res.sendFile('../client/build/index.html');
+// })
