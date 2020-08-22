@@ -8,11 +8,12 @@
 		"npm": "6.14.8"
 	},
 	"scripts": {
-		"start": "tsc && node index.js",
+		"start": "node index.js",
 		"server": "nodemon --exec ts-node index.ts",
 		"client": "cd client && npm start",
 		"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-		"heroku-postbuild": "cd client && npm install && npm run build"
+		"build": "tsc",
+		"heroku-postbuild": "npm run build && cd client && npm install && npm run build"
 	},
 	"keywords": [],
 	"author": "",
