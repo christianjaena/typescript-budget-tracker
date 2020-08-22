@@ -10,11 +10,11 @@
 	"scripts": {
 		"start": "node index.js",
 		"tsc": "tsc",
-		"postinstall": "npm run tsc",
+		"build": "npm run tsc",
 		"server": "nodemon --exec ts-node index.ts",
 		"client": "cd client && npm start",
 		"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-		"heroku-postbuild": "npm run postinstall && cd client && npm install && npm run build"
+		"heroku-postbuild": "npm run build && cd client && npm install && npm run build"
 	},
 	"keywords": [],
 	"author": "",
