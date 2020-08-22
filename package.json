@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"start": "ts-node server/index.ts",
-		"server": "nodemon -x ts-node index.ts",
+		"server": "nodemon -x ts-node server/index.ts",
 		"client": "cd client && npm start",
 		"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
 		"heroku-postbuild": "cd client && npm install && npm run build"
@@ -28,7 +28,6 @@
 		"morgan": "^1.10.0",
 		"nodemon": "^2.0.4",
 		"ts-node": "^8.10.2",
-		"ts-node-dev": "^1.0.0-pre.57",
 		"typescript": "^3.9.7"
 	},
 	"dependencies": {

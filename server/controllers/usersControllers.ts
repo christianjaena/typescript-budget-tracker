@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import User from '../interfaces/User.interface';
 import pool from '../pgConnection';
 
-export const userSignIn = async (req: Request, res: Response) => {
+export const user_sign_in = async (req: Request, res: Response) => {
 	try {
 		const { email, password }: User = req.body;
 		const findUser = await pool.query(
@@ -15,7 +15,7 @@ export const userSignIn = async (req: Request, res: Response) => {
 	}
 };
 
-export const userSignUp = async (req: Request, res: Response) => {
+export const user_sign_up = async (req: Request, res: Response) => {
 	try {
 		const { username, email, password }: User = req.body;
 		const findDuplicate = await pool.query(

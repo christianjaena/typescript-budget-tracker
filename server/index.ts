@@ -1,8 +1,8 @@
-import express, { Application, Request, Response, response } from 'express';
-import route from './routes/usersRoutes';
+import express, { Application } from 'express';
+import usersRoutes from './routes/usersRoutes';
+import transactionsRoutes from './routes/transactionsRoutes'
 import mongoose from 'mongoose';
 import mongoDbURI from './mongoConnection';
-import Transaction from './models/TransanctionModel';
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
 const app: Application = express();
@@ -32,46 +32,9 @@ app.use(cors());
 app.use(express.json());
 
 // * ROUTES * //
-app.get('/transactions', async (req: Request, res: Response) => {
-	try {
-		Transaction.find()
-			.sort({ createdAt: -1 })
-			.then(result => {
-				res.json(result);
-			})
-			.catch(err => console.log(err));
-	} catch (err) {
-		console.error(err.message);
-	}
-});
 
-app.post('/transactions', async (req: Request, res: Response) => {
-	try {
-		const addTransaction: { amount: number; description: string } = req.body;
-		const transaction = new Transaction(addTransaction);
-		transaction
-			.save()
-			.then(result => {
-				res.json(result);
-			})
-			.catch(err => console.log(err));
-	} catch (err) {
-		console.error(err.message);
-	}
-});
-
-app.delete('/transactions/:id', async (req: Request, res: Response) => {
-	try {
-		const id = req.params.id;
-		Transaction.findByIdAndDelete(id)
-			.then(result => res.json(result))
-			.catch(err => console.log(err));
-	} catch (err) {
-		console.error(err.message);
-	}
-});
-
-app.use('/users', route);
+app.use('/transactions', transactionsRoutes)
+app.use('/users', usersRoutes);
 
 // ? CATCH ALL ? //
 
