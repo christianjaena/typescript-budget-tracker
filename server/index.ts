@@ -3,6 +3,7 @@ import usersRoutes from './routes/usersRoutes';
 import transactionsRoutes from './routes/transactionsRoutes'
 import mongoose from 'mongoose';
 import mongoDbURI from './mongoConnection';
+import path from 'path';
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
 const app: Application = express();
@@ -39,5 +40,5 @@ app.use('/users', usersRoutes);
 // ? CATCH ALL ? //
 
 app.get('*', (req, res) => {
-	res.sendFile('../client/build/index.html');
+	res.sendFile(path.join(__dirname, 'client/build/index.html'));
 })

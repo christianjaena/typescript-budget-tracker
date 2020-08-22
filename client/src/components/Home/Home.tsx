@@ -35,7 +35,9 @@ const Home: React.FC<Props> = ({ username, email }) => {
 
 	const deleteTransaction = async (id: string) => {
 		await fetch(`/transactions/${id}`, { method: 'DELETE' });
-		setTransactions(prevTransactions => prevTransactions.filter(transaction => transaction._id !== id));
+		setTransactions(prevTransactions =>
+			prevTransactions.filter(transaction => transaction._id !== id)
+		);
 	};
 
 	const getTransactions = async () => {
@@ -90,7 +92,9 @@ const Home: React.FC<Props> = ({ username, email }) => {
 						onClick={() => {
 							deleteTransaction(transaction._id);
 						}}
-					>Delete</button>
+					>
+						Delete
+					</button>
 				</div>
 			))}
 		</>
