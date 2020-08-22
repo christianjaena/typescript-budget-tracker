@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Pool = require('pg').Pool;
 require('dotenv').config();
 var devConfig = {
@@ -12,4 +13,4 @@ var prodConfig = {
     connectionString: process.env.DATABASE_URL,
 };
 var pool = new Pool(process.env.NODE_ENV === 'production' ? prodConfig : devConfig);
-module.exports = pool;
+exports.default = pool;
