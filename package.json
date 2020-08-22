@@ -2,18 +2,16 @@
 	"name": "typescript-node",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
 	"engines": {
 		"node": "12.18.3",
 		"npm": "6.14.8"
 	},
 	"scripts": {
-		"start": "tsc && node index",
-		"predeploy": "concurrently --kill-others-on-fail \"tsc && nodemon index\" \"npm run client\"",
+		"start": "ts-node index.ts",
 		"server": "nodemon --exec ts-node index.ts",
 		"client": "cd client && npm start",
 		"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-		"heroku-postbuild": "tsc && cd client && npm install && npm run build"
+		"heroku-postbuild": "cd client && npm install && npm run build"
 	},
 	"keywords": [],
 	"author": "",
