@@ -8,7 +8,7 @@
 		"npm": "6.14.8"
 	},
 	"scripts": {
-		"start": "node index.js",
+		"start": "npm run tsc && node index.js",
 		"tsc": "tsc",
 		"postinstall": "npm run tsc",
 		"server": "nodemon --exec ts-node index.ts",
